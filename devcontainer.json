@@ -1,0 +1,77 @@
+{
+	"name": "Python 3",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": { 
+			// Update 'VARIANT' to pick a Python version: 3, 3.10, 3.9, 3.8, 3.7, 3.6
+			// Append -bullseye or -buster to pin to an OS version.
+			// Use -bullseye variants on local on arm64/Apple Silicon.
+			"VARIANT": "3-bullseye",
+		}
+	},
+	"runArgs": [
+		"--init", 
+		"--privileged",
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined"
+	],
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.shell.linux": "/usr/bin/zsh",
+		"terminal.integrated.defaultProfile.linux": "zsh",
+		"terminal.integrated.profiles.linux": {
+		  "zsh": {
+			"path": "/usr/bin/zsh",
+		  }
+		},
+		"workbench.colorTheme": "doom",
+		"workbench.iconTheme": "material-icon-theme",
+		"python.defaultInterpreterPath": "/usr/local/bin/python",
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": true,
+		"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
+		"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
+		"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+		"python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
+		"python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
+		"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
+		"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
+		"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
+		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		//General
+		"eamodio.gitlens",
+		"github.vscode-pull-request-github",
+		"hoovercj.vscode-power-mode",
+		"esbenp.prettier-vscode",
+		"DavidAnson.vscode-markdownlint",
+		"bierner.github-markdown-preview",
+		"donjayamanne.githistory",
+		"seatonjiang.gitmoji-vscode",
+		"shd101wyy.markdown-preview-enhanced",
+		"streetsidesoftware.code-spell-checker",
+		"MS-vsliveshare.vsliveshare",
+		"2gua.rainbow-brackets",
+		"tonybaloney.vscode-pets",
+		"PKief.material-icon-theme",
+		// Theme
+		"doomsec.doom-theme",
+		"johnpapa.vscode-peacock",
+		// Language
+		"ms-python.python",
+		"ms-python.vscode-pylance"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
+}
