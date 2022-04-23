@@ -12,10 +12,5 @@ COPY custom-scripts/zsh/* /tmp/library-scripts/
 RUN /bin/bash /tmp/library-scripts/update-zsh.sh "${USERNAME}" \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
 
-# Configure GIT ...
-COPY custom-scripts/git/* /tmp/library-scripts/
-RUN /bin/bash /tmp/library-scripts/configure-git.sh "${USERNAME}" \
-    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
-
 # Remove library scripts for final image
 RUN rm -rf /tmp/library-scripts
