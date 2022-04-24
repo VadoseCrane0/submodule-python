@@ -7,10 +7,17 @@ ARG INSTALL_ZSH="true"
 
 ARG USERNAME=vscode
 
+# [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
+ARG NODE_VERSION="none"
+RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+
 # Install and configure zsh
 COPY custom-scripts/zsh/* /tmp/library-scripts/
 RUN /bin/bash /tmp/library-scripts/update-zsh.sh "${USERNAME}" \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
+
+# [Optional] Uncomment if you want to install more global node packages
+RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "npm install -g @angular/cli"; fi
 
 # Remove library scripts for final image
 RUN rm -rf /tmp/library-scripts

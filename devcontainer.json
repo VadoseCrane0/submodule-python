@@ -7,6 +7,8 @@
 			// Append -bullseye or -buster to pin to an OS version.
 			// Use -bullseye variants on local on arm64/Apple Silicon.
 			"VARIANT": "3-bullseye",
+			// Options
+			"NODE_VERSION": "lts/*"
 		}
 	},
 	"runArgs": [
@@ -17,16 +19,22 @@
 		"seccomp=unconfined"
 	],
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
+	"settings": {
+		//setup terminal 
 		"terminal.integrated.shell.linux": "/usr/bin/zsh",
-		"terminal.integrated.defaultProfile.linux": "zsh",
 		"terminal.integrated.profiles.linux": {
 		  "zsh": {
 			"path": "/usr/bin/zsh",
 		  }
 		},
+		"terminal.integrated.defaultProfile.linux": "zsh",
+		
+		//theme settings
 		"workbench.colorTheme": "doom",
 		"workbench.iconTheme": "material-icon-theme",
+		"peacock.surpriseMeOnStartup": true,
+		
+		//python shit
 		"python.defaultInterpreterPath": "/usr/local/bin/python",
 		"python.linting.enabled": true,
 		"python.linting.pylintEnabled": true,
@@ -38,7 +46,10 @@
 		"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
 		"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
 		"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
+		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
+
+		//extention settings
+		"vscode-pets.petSize": "medium"
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
@@ -58,16 +69,27 @@
 		"2gua.rainbow-brackets",
 		"tonybaloney.vscode-pets",
 		"PKief.material-icon-theme",
+		
 		// Theme
 		"doomsec.doom-theme",
 		"johnpapa.vscode-peacock",
-		// Language
+
+		// Python
 		"ms-python.python",
-		"ms-python.vscode-pylance"
+		"ms-python.vscode-pylance",
+		
+		// node + typescript
+		"dbaeumer.vscode-eslint",
+		"eg2.vscode-npm-script",
+		"nrwl.angular-console",
+		
+		// angular
+		"Angular.ng-template",
+		"johnpapa.Angular2",
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [4200, 5000],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "pip3 install --user -r requirements.txt",
