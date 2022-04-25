@@ -1,4 +1,4 @@
-copy pasta from https://github.com/64-Dev-Docker/submodule-dotnet
+copy pasta from https://github.com/64-Dev-Docker/submodule-dotnet and modified for python
 
 
 # Developing in DevContainers
@@ -54,10 +54,6 @@ sudo apt-get install socat
 ```
 
 Executed from the WSL shell.
-
-### SSH
-
-https://code.visualstudio.com/docs/remote/containers#_using-ssh-keys
 
 ## Setup and Initial Configuration
 
