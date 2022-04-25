@@ -1,5 +1,5 @@
 {
-	"name": "C# (.NET)",
+	"name": "python",
 	"dockerComposeFile": "./docker-compose.yml",
 	"service": "python",
 	"workspaceFolder": "/workspace",

@@ -4,10 +4,10 @@ services:
     build: 
       context: ../.devcontainer
       dockerfile: Dockerfile
-      # args: 
-      #   VARIANT: buster
-      #   INSTALL_NODE: true
-      #   NODE_VERSION: lts/*
+      args: 
+        VARIANT: 3-bullseye
+        INSTALL_NODE: true
+        NODE_VERSION: lts/*
     volumes: 
       - ..:/workspace:cached
       - type: bind
