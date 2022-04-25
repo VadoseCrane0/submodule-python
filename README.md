@@ -1,4 +1,4 @@
-copy pasta from https://github.com/64-Dev-Docker/submodule-dotnet
+copy pasta from https://github.com/64-Dev-Docker/submodule-dotnet and modified for python
 
 
 # Developing in DevContainers
