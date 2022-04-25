@@ -55,10 +55,6 @@ sudo apt-get install socat
 
 Executed from the WSL shell.
 
-### SSH
-
-https://code.visualstudio.com/docs/remote/containers#_using-ssh-keys
-
 ## Setup and Initial Configuration
 
 This is a quick walk through of setting up a development environment in VS Code using docker images. I don't claim great knowledge on this, I've got them running and they seem to be ok.
