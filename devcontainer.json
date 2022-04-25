@@ -1,22 +1,11 @@
 {
-	"name": "Python 3",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"args": { 
-			// Update 'VARIANT' to pick a Python version: 3, 3.10, 3.9, 3.8, 3.7, 3.6
-			// Append -bullseye or -buster to pin to an OS version.
-			// Use -bullseye variants on local on arm64/Apple Silicon.
-			"VARIANT": "3-bullseye",
-			// Options
-			"NODE_VERSION": "lts/*"
-		}
-	},
+	"name": "C# (.NET)",
+	"dockerComposeFile": "./docker-compose.yml",
+	"service": "python",
+	"workspaceFolder": "/workspace",
 	"runArgs": [
-		"--init", 
-		"--privileged",
-		"--cap-add=SYS_PTRACE",
-		"--security-opt",
-		"seccomp=unconfined"
+		"--init",
+		"--privileged"
 	],
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
@@ -49,7 +38,11 @@
 		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
 
 		//extention settings
-		"vscode-pets.petSize": "medium"
+		"vscode-pets.petSize": "medium",
+
+		//plantuml
+		"plantuml.render": "PlantUMLServer",
+		"plantuml.server": "http://plantuml:8080/",
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
@@ -67,6 +60,8 @@
 		"streetsidesoftware.code-spell-checker",
 		"MS-vsliveshare.vsliveshare",
 		"2gua.rainbow-brackets",
+		"jebbs.plantuml",
+		"mhutchie.git-graph",
 		"tonybaloney.vscode-pets",
 		"PKief.material-icon-theme",
 		

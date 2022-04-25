@@ -1,23 +1,38 @@
-# [Choice] Python version (use -bullseye variants on local arm64/Apple Silicon): 3, 3.10, 3.9, 3.8, 3.7, 3.6, 3-bullseye, 3.10-bullseye, 3.9-bullseye, 3.8-bullseye, 3.7-bullseye, 3.6-bullseye, 3-buster, 3.10-buster, 3.9-buster, 3.8-buster, 3.7-buster, 3.6-buster
+# [Choice] .NET version: 6.0, 5.0, 3.1, 6.0-bullseye, 5.0-bullseye, 3.1-bullseye, 6.0-focal, 5.0-focal, 3.1-focal
 ARG VARIANT=3-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
+# [Option] Install Node.js
+ARG INSTALL_NODE="true"
+ARG NODE_VERSION="lts/*"
+RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+
+# Install my tooling
 # [Option] Install zsh
 ARG INSTALL_ZSH="true"
-
+# [Option] Upgrade OS packages to their latest versions
+ARG UPGRADE_PACKAGES="true"
+# Install needed packages and setup non-root user. Use a separate RUN statement to add your own dependencies.
 ARG USERNAME=vscode
-
-# [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
-ARG NODE_VERSION="none"
-RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
 
 # Install and configure zsh
 COPY custom-scripts/zsh/* /tmp/library-scripts/
 RUN /bin/bash /tmp/library-scripts/update-zsh.sh "${USERNAME}" \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
 
-# [Optional] Uncomment if you want to install more global node packages
-RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "npm install -g @angular/cli"; fi
+# Configure GIT ...
+COPY custom-scripts/git/* /tmp/library-scripts/
+RUN /bin/bash /tmp/library-scripts/configure-git.sh "${USERNAME}" \
+    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
+
+# Configure SSH ... 
+# Configure commit signing
+# COPY custom-scripts/security/* /tmp/library-scripts/
+# RUN /bin/bash /tmp/library-scripts/configure-sign.sh "${USERNAME}" \
+#     && /bin/bash /tmp/library-scripts/configure-cert.sh \
+#     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
 
 # Remove library scripts for final image
 RUN rm -rf /tmp/library-scripts
