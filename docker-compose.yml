@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
       args: 
         VARIANT: 3-bullseye
-        INSTALL_NODE: true
+        INSTALL_NODE: "true"
         NODE_VERSION: lts/*
     volumes: 
       - ..:/workspace:cached

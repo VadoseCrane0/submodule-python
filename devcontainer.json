@@ -1,12 +1,10 @@
 {
 	"name": "python",
+
 	"dockerComposeFile": "./docker-compose.yml",
 	"service": "python",
 	"workspaceFolder": "/workspace",
-	"runArgs": [
-		"--init",
-		"--privileged"
-	],
+
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		//setup terminal 
@@ -40,9 +38,6 @@
 		//extention settings
 		"vscode-pets.petSize": "medium",
 
-		//plantuml
-		"plantuml.render": "PlantUMLServer",
-		"plantuml.server": "http://plantuml:8080/",
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
@@ -73,14 +68,12 @@
 		"ms-python.python",
 		"ms-python.vscode-pylance",
 		
-		// node + typescript
-		"dbaeumer.vscode-eslint",
-		"eg2.vscode-npm-script",
-		"nrwl.angular-console",
-		
 		// angular
 		"Angular.ng-template",
 		"johnpapa.Angular2",
+		"dbaeumer.vscode-eslint",
+		"eg2.vscode-npm-script",
+		"nrwl.angular-console",
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
