@@ -19,9 +19,4 @@ services:
       #   target: /home/vscode/.gnupg
       #   consistency: cached
     command: /bin/sh -c "while sleep 1000; do :; done"
-  # plantuml:
-  #   # using the jetty server under the belief it is lighter
-  #   image: "plantuml/plantuml-server:jetty"
-  #   ports:
-  #     - "8080:8080"
 

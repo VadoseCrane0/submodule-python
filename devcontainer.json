@@ -55,7 +55,6 @@
 		"streetsidesoftware.code-spell-checker",
 		"MS-vsliveshare.vsliveshare",
 		"2gua.rainbow-brackets",
-		"jebbs.plantuml",
 		"mhutchie.git-graph",
 		"tonybaloney.vscode-pets",
 		"PKief.material-icon-theme",
@@ -73,11 +72,11 @@
 		"johnpapa.Angular2",
 		"dbaeumer.vscode-eslint",
 		"eg2.vscode-npm-script",
-		"nrwl.angular-console",
+		"nrwl.angular-console"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [4200, 5000],
+	"forwardPorts": [4200],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "pip3 install --user -r requirements.txt",
