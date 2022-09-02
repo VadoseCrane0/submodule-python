@@ -4,6 +4,12 @@
 
 https://code.visualstudio.com/docs/remote/containers#_sharing-git-credentials-with-your-container
 
+## Set up Git Commit Signing
+
+https://code.visualstudio.com/docs/remote/containers#_sharing-gpg-keys
+
+to have vscode sign your commits Add `"git.enableCommitSigning": true` to `settings.json`
+
 ## Getting a .devcontainer.json into a repo
 
 ### Using _git submodules_
@@ -35,15 +41,3 @@ git push
 cd ..
 git submodule update
 ```
-
-## General WSL
-
-- [Configuring WSL](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#configure-global-options-with-wslconfig)
-
-Sone extensions (_GitGraph_) require `socat` to communicate with the host this can be installed with:
-
-```sh
-sudo apt-get install socat
-```
-
-Executed from the WSL shell.
