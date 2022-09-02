@@ -21,6 +21,13 @@
 		"vscode": {
 			// Set *default* container specific settings.json values on container create.
 			"settings": { 
+				
+				// theme/extension settings
+				"workbench.colorTheme": "doom",
+				"workbench.iconTheme": "material-icon-theme",
+				"peacock.surpriseMeOnStartup": true,
+				
+				// Settings for python
 				"python.defaultInterpreterPath": "/usr/local/bin/python",
 				"python.linting.enabled": true,
 				"python.linting.pylintEnabled": true,
@@ -32,13 +39,53 @@
 				"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
 				"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
 				"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-				"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
+				"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
+				
+				//extention settings
+				"vscode-pets.petSize": "medium",
+				"vscode-pets.position": "explorer",
+				"vscode-pets.theme": "castle",
+				"powermode.shake.enabled": false,
+				"powermode.presets": "fireworks",
+				"powermode.enabled": true
+			
 			},
+
 			
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
+				//General
+				"eamodio.gitlens",
+				"github.vscode-pull-request-github",
+				"hoovercj.vscode-power-mode",
+				"esbenp.prettier-vscode",
+				"DavidAnson.vscode-markdownlint",
+				"bierner.github-markdown-preview",
+				"donjayamanne.githistory",
+				"seatonjiang.gitmoji-vscode",
+				"shd101wyy.markdown-preview-enhanced",
+				"streetsidesoftware.code-spell-checker",
+				"MS-vsliveshare.vsliveshare",
+				"2gua.rainbow-brackets",
+				"jebbs.plantuml",
+				"mhutchie.git-graph",
+				"tonybaloney.vscode-pets",
+				"PKief.material-icon-theme",
+				
+				// Theme
+				"doomsec.doom-theme",
+				"johnpapa.vscode-peacock",
+		
+				// Python
 				"ms-python.python",
-				"ms-python.vscode-pylance"
+				"ms-python.vscode-pylance",
+				
+				// angular
+				"Angular.ng-template",
+				"johnpapa.Angular2",
+				"dbaeumer.vscode-eslint",
+				"eg2.vscode-npm-script",
+				"nrwl.angular-console"
 			]
 		}
 	},
@@ -52,6 +99,15 @@
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode",
 	"features": {
+		"common": {
+			"username": "automatic",
+			"uid": "automatic",
+			"gid": "automatic",
+			"installZsh": true,
+			"installOhMyZsh": true,
+			"upgradePackages": true,
+			"nonFreePackages": false
+		},
 		"git": "latest",
 		"github-cli": "latest"
 	}
